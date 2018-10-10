@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="207.0" prefWidth="282.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="control.AdminController">
+   <children>
+      <Label layoutX="21.0" layoutY="27.0" text="Admin Page" />
+      <Button layoutX="223.0" mnemonicParsing="false" onAction="#logOut" text="Log Out" />
+      <Button layoutX="21.0" layoutY="149.0" mnemonicParsing="false" onAction="#addBook" text="Add Book" />
+   </children>
+</AnchorPane>

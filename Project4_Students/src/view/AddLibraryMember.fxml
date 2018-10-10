@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="352.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.AddLibraryMemberController">
+   <children>
+      <VBox layoutX="25.0" prefHeight="354.0" prefWidth="300.0" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label prefHeight="28.0" prefWidth="300.0" text="Add New Library Member">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Label>
+            <Separator minHeight="20.0" prefHeight="20.0" prefWidth="300.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Separator>
+            <TextField fx:id="memberId" promptText="Member ID">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="fName" layoutX="20.0" layoutY="30.0" promptText="First Name">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="lName" layoutX="10.0" layoutY="57.0" promptText="Last Name">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="street" layoutX="10.0" layoutY="84.0" promptText="Street Address">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="city" layoutX="10.0" layoutY="108.0" promptText="City">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="state" layoutX="10.0" layoutY="81.0" promptText="State">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="zip" layoutX="10.0" layoutY="27.0" promptText="Zip">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="phone" layoutX="10.0" layoutY="54.0" prefHeight="38.0" prefWidth="296.0" promptText="Phone">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+            </TextField>
+            <HBox prefHeight="62.0" prefWidth="300.0" />
+         </children>
+      </VBox>
+      <Button layoutY="316.0" mnemonicParsing="false" onAction="#save" prefHeight="30.0" prefWidth="150.0" text="Save" />
+      <Button layoutX="150.0" layoutY="316.0" mnemonicParsing="false" onAction="#cancel" prefHeight="30.0" prefWidth="150.0" text="Cancel" />
+   </children>
+</AnchorPane>
