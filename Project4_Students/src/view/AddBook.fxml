@@ -10,7 +10,7 @@
       <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="227.0" text="Add Book" />
       <TextField fx:id="isbn" layoutX="19.0" layoutY="52.0" prefHeight="27.0" prefWidth="227.0" promptText="isbn" />
       <TextField fx:id="title" layoutX="19.0" layoutY="89.0" prefHeight="27.0" prefWidth="227.0" promptText="title" />
-      <TextField fx:id="maxCheckoutLength" layoutX="19.0" layoutY="127.0" prefHeight="27.0" prefWidth="227.0" promptText="max checkout days" />
+      <TextField fx:id="maxCheckoutLength" layoutX="19.0" layoutY="127.0" onAction="#confirmMaxDays" prefHeight="27.0" prefWidth="227.0" promptText="max checkout days (7 or 21)" />
       <TextField fx:id="numCopies" layoutX="19.0" layoutY="163.0" prefHeight="27.0" prefWidth="227.0" promptText="number of copies" />
       <TextField fx:id="authorFname" layoutX="19.0" layoutY="199.0" prefHeight="27.0" prefWidth="227.0" promptText="author first name" />
       <TextField fx:id="authorLname" layoutX="19.0" layoutY="235.0" prefHeight="27.0" prefWidth="227.0" promptText="author last name" />

@@ -11,6 +11,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -111,6 +113,22 @@ public class AddBookController {
 		
 	}
 
+	public void confirmMaxDays(ActionEvent event) {
+		try {
+			int days = Integer.parseInt(maxCheckoutLength.getText());
+			if(days != 7 || days != 21) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error Dialog");
+				alert.setHeaderText("Look, an Error Dialog");
+				alert.setContentText("Maximum Checkout Days can only be 7 or 21.");
+
+				alert.showAndWait();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@FXML
 	public void addAuthor(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/AddAuthor.fxml"));

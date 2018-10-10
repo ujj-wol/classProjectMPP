@@ -13,7 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.dataaccess.Auth;
 import model.dataaccess.DataAccessFacade;
-import model.dataaccess.TestData;
 import model.domain.User;
 
 public class LoginController {
@@ -68,6 +67,7 @@ public class LoginController {
 					Stage window = (Stage) ((Node) (event.getSource())).getScene().getWindow();
 					window.setScene(newScene);
 					window.show();
+					
 				} else {
 					System.out.println("id and password doesnot match!");
 				}
