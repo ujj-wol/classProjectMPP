@@ -131,12 +131,9 @@ public class LibrarianController {
 					canNotFind("Can not find copy of this book!");
 				} else {
 					if (member != null && book != null) {
-						boolean bookAvailable = true;
 						if (!book.isAvailable()) {
 							canNotFind("This book is not available!");
-							bookAvailable = false;
-						}
-						if (bookAvailable) {							
+						} else {											
 							BookCopy bookCopy = book.getNextAvailableCopy();
 							if (bookCopy != null) {
 								LocalDate checkoutDate = LocalDate.now();
