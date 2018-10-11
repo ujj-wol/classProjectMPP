@@ -19,25 +19,25 @@
       </Label>
       <Label layoutX="55.0" layoutY="151.0" text="Member ID:" />
       <Label layoutX="55.0" layoutY="184.0" text="ISBN Number:" />
-      <TextField fx:id="memberID" layoutX="154.0" layoutY="147.0" onMouseClicked="#clearMessage" prefHeight="27.0" prefWidth="198.0" />
-      <TextField fx:id="isbnNumber" layoutX="154.0" layoutY="180.0" onMouseClicked="#clearMessage" />
-      <Button layoutX="154.0" layoutY="224.0" mnemonicParsing="false" onAction="#handleSubmitButtonAction" text="Checkout" />
-      <Button layoutX="369.0" layoutY="147.0" mnemonicParsing="false" onAction="#handleSearchButtonAction" prefHeight="27.0" prefWidth="181.0" text="Search By Member ID" />
+      <TextField fx:id="memberID" layoutX="154.0" layoutY="147.0" onMouseClicked="#clearMessage" prefHeight="27.0" prefWidth="236.0" />
+      <TextField fx:id="isbnNumber" layoutX="154.0" layoutY="180.0" onMouseClicked="#clearMessage" prefHeight="27.0" prefWidth="236.0" />
+      <Button layoutX="234.0" layoutY="223.0" mnemonicParsing="false" onAction="#handleSubmitButtonAction" text="Checkout" />
+      <Button layoutX="400.0" layoutY="147.0" mnemonicParsing="false" onAction="#handleSearchButtonAction" prefHeight="27.0" prefWidth="181.0" text="Search By Member ID" />
       <TableView fx:id="tableView" layoutX="29.0" layoutY="280.0" prefHeight="200.0" prefWidth="552.0">
         <columns>
           <TableColumn fx:id="isbn" editable="false" prefWidth="75.0" text="ISBN" />
           <TableColumn fx:id="bookTitle" editable="false" prefWidth="223.0" text="Book Title" />
-          <TableColumn fx:id="coDate" editable="false" prefWidth="96.0" text="Checkout Date" />
-          <TableColumn fx:id="dDate" editable="false" prefWidth="74.0" text="Due Date" />
+          <TableColumn fx:id="coDate" editable="false" prefWidth="121.0" text="Checkout Date" />
+          <TableColumn fx:id="dDate" editable="false" prefWidth="103.0" text="Due Date" />
         </columns>
       </TableView>
-      <Button layoutX="422.0" layoutY="95.0" mnemonicParsing="false" onAction="#addMember" text="Add New Member" />
+      <Button layoutX="453.0" layoutY="97.0" mnemonicParsing="false" onAction="#addMember" text="Add New Member" />
       <Label layoutX="150.0" layoutY="16.0" prefHeight="28.0" prefWidth="320.0" text="Library Management System">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
-      <Text fx:id="msg" layoutX="330.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="198.0" />
+      <Text fx:id="msg" layoutX="328.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.0" />
       <Button layoutX="544.0" mnemonicParsing="false" onAction="#logOut" text="Log Out" />
    </children>
 </AnchorPane>

@@ -77,24 +77,25 @@ public class AdminController {
 		}
 	}
 	
-//	@FXML
-//	public void searchOverdueCopies(ActionEvent event) {
-//		try {
-////			//((Node)(event.getSource())).getScene().getWindow().hide();
-////
-////			Parent root = FXMLLoader.load(getClass().getResource("/view/SearchOverdueCopiesView.fxml"));
-////			// create a scene with root in it
-////			Scene scene = new Scene(root);
-////
-////			// get stage
-////			Stage primaryStage = (Stage)((Node)(event.getSource())).getScene().getWindow();
-////
-////			// set scene onto the stage
-////			primaryStage.setScene(scene);
-////			primaryStage.show();
-//
-//		} catch (Exception e) {
-//			System.out.println("Copy Overdue Check");
-//		}
-//	}
+	@FXML
+	public void searchOverdueCopies(ActionEvent event) {
+		try {
+			//((Node)(event.getSource())).getScene().getWindow().hide();
+
+			Parent root = FXMLLoader.load(getClass().getResource("/view/OverduedHomeView.fxml"));
+			// create a scene with root in it
+			Scene scene = new Scene(root);
+
+			// get stage
+			Stage primaryStage = (Stage)((Node)(event.getSource())).getScene().getWindow();
+			
+			// set scene onto the stage
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+		} catch (Exception e) {
+			System.out.println("Copy Overdue Check");
+			e.printStackTrace();
+		}
+	}
 }

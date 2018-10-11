@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="400.0" minWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.OverdueController">
+   <children>
+      <SplitPane dividerPositions="0.12814070351758794" layoutX="8.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="608.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="78.0" prefWidth="698.0">
+               <children>
+                  <HBox alignment="BASELINE_CENTER" layoutX="1.0" layoutY="5.0" prefHeight="53.0" prefWidth="698.0">
+                     <children>
+                        <Label prefHeight="27.0" prefWidth="63.0" text="Search" />
+                        <TextField fx:id="search" onAction="#search" onKeyReleased="#search" prefHeight="10.0" prefWidth="586.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane fx:id="searchResults" opacity="0.56" prefHeight="314.0" prefWidth="698.0">
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis>
+               <children>
+                  <TableView fx:id="table" prefHeight="342.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="isbnCol" prefWidth="67.0" text="ISBN" />
+                      <TableColumn fx:id="titleCol" prefWidth="165.0" text="Title" />
+                        <TableColumn fx:id="copyCol" prefWidth="74.0" text="Copy #" />
+                        <TableColumn fx:id="checkoutCol" prefWidth="173.0" text="CheckedOut By" />
+                        <TableColumn fx:id="duedateCol" prefWidth="100.0" text="Due Date" />
+                        <TableColumn fx:id="availableCol" prefWidth="118.0" text="Availability" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

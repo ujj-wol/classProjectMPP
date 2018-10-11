@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="600.0" minWidth="900.0" styleClass="parent" stylesheets="@admin.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="BASELINE_LEFT" layoutY="87.0" minHeight="527.0" minWidth="300.0" prefHeight="553.0" prefWidth="300.0" styleClass="sidebar">
+         <children>
+            <HBox layoutX="10.0" layoutY="130.0" prefHeight="60.0" prefWidth="300.0" spacing="5.0" styleClass="privilege">
+               <children>
+                  <Label alignment="BASELINE_LEFT" textFill="#f5f3f3" textOverrun="CLIP">
+                     <font>
+                        <Font name="Segoe Script" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BASELINE_LEFT" prefHeight="27.0" prefWidth="256.0" textFill="#fcf7f7">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="60.0" prefWidth="300.0" spacing="5.0" styleClass="privilege">
+               <children>
+                  <Label alignment="BASELINE_LEFT" styleClass="privilege" text="A" textFill="#f5f3f3" textOverrun="CLIP">
+                     <font>
+                        <Font name="Segoe Script" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BASELINE_LEFT" prefHeight="27.0" prefWidth="256.0" text="Display Checkout Record" textFill="#fcf7f7">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="80.0" prefHeight="60.0" prefWidth="300.0" spacing="5.0" styleClass="privilege">
+               <children>
+                  <Label alignment="BASELINE_LEFT" text="A" textFill="#f5f3f3" textOverrun="CLIP">
+                     <font>
+                        <Font name="Segoe Script" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BASELINE_LEFT" prefHeight="27.0" prefWidth="256.0" text="Checkout a Book" textFill="#fcf7f7">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="140.0" prefHeight="60.0" prefWidth="300.0" spacing="5.0" styleClass="privilege">
+               <children>
+                  <Label alignment="BASELINE_LEFT" text="A" textFill="#f5f3f3" textOverrun="CLIP">
+                     <font>
+                        <Font name="Segoe Script" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BASELINE_LEFT" prefHeight="27.0" prefWidth="256.0" text="Display Overdued Member" textFill="#fcf7f7">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="300.0" minHeight="600.0" minWidth="500.0" prefHeight="640.0" prefWidth="601.0" />
+      <Label id="welcome" alignment="BASELINE_CENTER" layoutX="15.0" layoutY="28.0" prefHeight="87.0" prefWidth="908.0" text="Welcome to Maharishi University of Management Library System" textFill="#fcf8f8" AnchorPane.bottomAnchor="553.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="Roboto Black" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
