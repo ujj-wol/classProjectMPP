@@ -109,7 +109,11 @@ public class LibrarianController {
 		LibraryMember member = libraryMembers.get(memberID.getText());
 		if (member != null) {
 			CheckoutRecord checkoutRecord = member.getCheckoutRecord();
-			this.displayTableView(checkoutRecord);
+			if (checkoutRecord != null) {
+				this.displayTableView(checkoutRecord);
+			} else {
+				canNotFind("Can not find any checkout record!");
+			}
 		} else {
 			canNotFind("Can not find this member id");
 			tableView.setItems(null);
