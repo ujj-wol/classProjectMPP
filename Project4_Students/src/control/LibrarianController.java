@@ -32,10 +32,10 @@ import model.domain.CheckoutRecordEntry;
 import model.domain.LibraryMember;
 
 public class LibrarianController {
-	
+
 	@FXML
 	private TextField memberID;
-	
+
 	@FXML
 	private TextField isbnNumber;
 
@@ -63,7 +63,7 @@ public class LibrarianController {
 
 	@FXML
 	protected void handleSearchButtonAction(ActionEvent event) {
-		
+
 		DataAccess da = new DataAccessFacade();
 		HashMap<String, LibraryMember> libraryMembers = da.readMemberMap();
 
@@ -80,12 +80,12 @@ public class LibrarianController {
 			tableView.setItems(null);
 		}
 	}
-	
+
 	public void displayTableView(CheckoutRecord checkoutRecord) {
 		List<CheckoutRecordEntry> recordEntries = checkoutRecord.getCheckoutEntries();
-		
-		// Display to console 
-		for (CheckoutRecordEntry recordEntry: recordEntries) {
+
+		// Display to console
+		for (CheckoutRecordEntry recordEntry : recordEntries) {
 			System.out.println("ISBN: " + recordEntry.getBookCopy().getBook().getIsbn());
 			System.out.println("Title: " + recordEntry.getBookCopy().getBook().getTitle());
 			System.out.println("Checkout Date: " + recordEntry.getCheckoutDate());
@@ -130,42 +130,37 @@ public class LibrarianController {
 				if (book.getCopyNums() == null) {
 					canNotFind("Can not find copy of this book!");
 				} else {
-					if (member != null && book != null) {
-						if (!book.isAvailable()) {
-							canNotFind("This book is not available!");
-						} else {											
-							BookCopy bookCopy = book.getNextAvailableCopy();
-							if (bookCopy != null) {
-								LocalDate checkoutDate = LocalDate.now();
-								LocalDate dueDate = checkoutDate.plusDays(book.getMaxCheckoutLength());
-								// If both member ID and book ID are found and a copy is available, a new
-								// checkout record entry is created
-								CheckoutRecordEntry cRecordEntry = new CheckoutRecordEntry(checkoutDate, dueDate,
-										bookCopy);
-								CheckoutRecord checkoutRecord = null;
-								if (member.getCheckoutRecord() != null) {
-									checkoutRecord = member.getCheckoutRecord();
-								} else {
-									checkoutRecord = new CheckoutRecord();
-								}
 
-								// This checkout entry is then added to the member's checkout record
-								checkoutRecord.addRecordEntry(cRecordEntry);
-								member.setCheckoutRecord(checkoutRecord);
-								da.saveNewMember(member);
-
-								// The copy that is checked out is marked as unavailable.
-								bookCopy.changeAvailability();
-								da.saveNewBook(book);
-																
-								this.displayTableView(checkoutRecord);
-								success("Checkout successfully!");
-							} else {
-								canNotFind("BookCopy is not available!");
+					if (!book.isAvailable()) {
+						canNotFind("This book is not available!");
+					} else {
+						BookCopy bookCopy = book.getNextAvailableCopy();
+						if (bookCopy != null) {
+							LocalDate checkoutDate = LocalDate.now();
+							LocalDate dueDate = checkoutDate.plusDays(book.getMaxCheckoutLength());
+							// If both member ID and book ID are found and a copy is available, a new
+							// checkout record entry is created
+							CheckoutRecordEntry cRecordEntry = new CheckoutRecordEntry(checkoutDate, dueDate, bookCopy);
+							CheckoutRecord checkoutRecord = new CheckoutRecord();
+							if (member.getCheckoutRecord() != null) {
+								checkoutRecord = member.getCheckoutRecord();
 							}
+
+							// This checkout entry is then added to the member's checkout record
+							checkoutRecord.addRecordEntry(cRecordEntry);
+							member.setCheckoutRecord(checkoutRecord);
+							da.saveNewMember(member);
+
+							// The copy that is checked out is marked as unavailable.
+							bookCopy.changeAvailability();
+							da.saveNewBook(book);
+
+							this.displayTableView(checkoutRecord);
+							success("Checkout successfully!");
+						} else {
+							canNotFind("BookCopy is not available!");
 						}
 					}
-
 				}
 			} else {
 				canNotFind("Can not find this book!");
@@ -177,20 +172,20 @@ public class LibrarianController {
 		}
 
 	}
-	
+
 	@FXML
 	private Text msg;
-	
+
 	public void canNotFind(String errorMsg) {
 		msg.setText(errorMsg);
 		msg.setFill(Paint.valueOf("red"));
 	}
-	
+
 	public void success(String successMsg) {
 		msg.setText(successMsg);
 		msg.setFill(Paint.valueOf("green"));
 	}
-	
+
 	@FXML
 	private void clearMessage() {
 		msg.setText("");
@@ -223,23 +218,21 @@ public class LibrarianController {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml")); 
+			root = FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml"));
 			// create a scene with root in it
 			Scene scene = new Scene(root);
-	
+
 			// get stage
 			Stage primaryStage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
-	
+
 			// set scene onto the stage
 			primaryStage.setScene(scene);
 			primaryStage.show();
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 }
-
-
