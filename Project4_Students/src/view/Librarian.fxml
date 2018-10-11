@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="520.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.LibrarianController">
+   <children>
+      <Label layoutX="55.0" layoutY="71.0" prefHeight="27.0" prefWidth="128.0" text="Librarian Page">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="55.0" layoutY="118.0" prefHeight="21.0" prefWidth="128.0" text="Checkout a book" underline="true">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="55.0" layoutY="159.0" text="Member ID:" />
+      <Label layoutX="55.0" layoutY="192.0" text="ISBN Number:" />
+      <TextField fx:id="memberID" layoutX="154.0" layoutY="155.0" onMouseClicked="#clearMessage" prefHeight="27.0" prefWidth="198.0" />
+      <TextField fx:id="isbnNumber" layoutX="154.0" layoutY="188.0" onMouseClicked="#clearMessage" />
+      <Button layoutX="154.0" layoutY="232.0" mnemonicParsing="false" onAction="#handleSubmitButtonAction" text="Checkout" />
+      <Button layoutX="369.0" layoutY="155.0" mnemonicParsing="false" onAction="#handleSearchButtonAction" prefHeight="27.0" prefWidth="181.0" text="Search By Member ID" />
+      <TableView fx:id="tableView" layoutX="29.0" layoutY="296.0" prefHeight="200.0" prefWidth="552.0">
+        <columns>
+          <TableColumn fx:id="isbn" editable="false" prefWidth="75.0" text="ISBN" />
+          <TableColumn fx:id="bookTitle" editable="false" prefWidth="223.0" text="Book Title" />
+          <TableColumn fx:id="coDate" editable="false" prefWidth="96.0" text="Checkout Date" />
+          <TableColumn fx:id="dDate" editable="false" prefWidth="74.0" text="Due Date" />
+        </columns>
+      </TableView>
+      <Button layoutX="422.0" layoutY="103.0" mnemonicParsing="false" onAction="#addMember" text="Add New Member" />
+      <Label layoutX="150.0" layoutY="24.0" prefHeight="28.0" prefWidth="320.0" text="Library Management System">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Text fx:id="msg" layoutX="324.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+   </children>
+</AnchorPane>

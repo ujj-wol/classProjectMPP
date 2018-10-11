@@ -61,7 +61,7 @@ public class LoginController {
 					
 					default:
 					case LIBRARIAN:
-						root = FXMLLoader.load(LibrarianController.class.getResource("/view/LibrarianPage.fxml"));
+						root = FXMLLoader.load(LibrarianController.class.getResource("/view/Librarian.fxml"));
 						accessLevel = "Librarian";
 						break;
 					}

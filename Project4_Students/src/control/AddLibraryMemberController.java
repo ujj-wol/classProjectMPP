@@ -38,8 +38,8 @@ public class AddLibraryMemberController {
 	
 	private String destination;
 	{
-		if(LoginController.accessLevel.equals("Admin"))
-			destination = "/view/LibrarianPage.fxml";
+		if(LoginController.accessLevel.equals("Librarian"))
+			destination = "/view/Librarian.fxml";
 		else
 			destination = "/view/BothAccessPage.fxml";
 	}
