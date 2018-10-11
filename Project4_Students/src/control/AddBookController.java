@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -97,7 +96,7 @@ public class AddBookController implements Initializable { //to initialize value 
 			addresslist.add(address);
 			anAuthor = new Author(authorFname.getText(), authorLname.getText(), authorPhone.getText(), address, authorBio.getText());
 			authorlist.add(anAuthor);
-			book = new Book(isbn.getText(), title.getText(), Integer.parseInt((String)choicebox.getValue()), authorlist);
+			book = new Book(isbn.getText(), title.getText(), Integer.parseInt(choicebox.getValue()), authorlist);
 			numberOfBookCopy = Integer.parseInt(numCopies.getText());
 			addBookCopies();
 			
@@ -126,7 +125,6 @@ public class AddBookController implements Initializable { //to initialize value 
 	}
 	
 	private void addBookCopies() {
-		// TODO Auto-generated method stub
 		//one copy is already created when a book is added. Only if there are multiple copies we need to add those copies
 		for(int i = 1; i < numberOfBookCopy; i++) {
 			book.addCopy();
