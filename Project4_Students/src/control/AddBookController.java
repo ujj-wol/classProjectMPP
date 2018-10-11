@@ -1,18 +1,20 @@
 package control;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -21,7 +23,8 @@ import model.domain.Address;
 import model.domain.Author;
 import model.domain.Book;
 
-public class AddBookController {
+public class AddBookController implements Initializable { //to initialize value into checkBox
+
 	@FXML
 	private TextField isbn;
 	@FXML
@@ -68,6 +71,16 @@ public class AddBookController {
 	}
 
 	@FXML
+    private ChoiceBox<String> choicebox;
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		choicebox.getItems().addAll("7", "21");   //this initializes values
+		choicebox.getSelectionModel().select(1);  //default selection
+	}
+	
+	
+	@FXML
 	public void addBook(ActionEvent event) {
 		try {
 			
@@ -84,7 +97,7 @@ public class AddBookController {
 			addresslist.add(address);
 			anAuthor = new Author(authorFname.getText(), authorLname.getText(), authorPhone.getText(), address, authorBio.getText());
 			authorlist.add(anAuthor);
-			book = new Book(isbn.getText(), title.getText(), Integer.parseInt(maxCheckoutLength.getText()), authorlist);
+			book = new Book(isbn.getText(), title.getText(), Integer.parseInt((String)choicebox.getValue()), authorlist);
 			numberOfBookCopy = Integer.parseInt(numCopies.getText());
 			addBookCopies();
 			
@@ -118,21 +131,6 @@ public class AddBookController {
 		for(int i = 1; i < numberOfBookCopy; i++) {
 			book.addCopy();
 		}	
-	}
-	
-	public void confirmMaxDays() {
-		try {
-			int days = Integer.parseInt(maxCheckoutLength.getText());
-			if(days != 7 && days != 21) {
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setTitle("Error Dialog");
-				alert.setHeaderText("Look, an Error Dialog");
-				alert.setContentText("Maximum Checkout Days can only be 7 or 21.");
-				alert.showAndWait();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 	
 	@FXML
