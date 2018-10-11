@@ -142,12 +142,10 @@ public class LibrarianController {
 								// checkout record entry is created
 								CheckoutRecordEntry cRecordEntry = new CheckoutRecordEntry(checkoutDate, dueDate,
 										bookCopy);
-								CheckoutRecord checkoutRecord = null;
+								CheckoutRecord checkoutRecord = new CheckoutRecord();
 								if (member.getCheckoutRecord() != null) {
 									checkoutRecord = member.getCheckoutRecord();
-								} else {
-									checkoutRecord = new CheckoutRecord();
-								}
+								} 
 
 								// This checkout entry is then added to the member's checkout record
 								checkoutRecord.addRecordEntry(cRecordEntry);
