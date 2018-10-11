@@ -8,6 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 //public class LibrarianController {
 //
 //	@FXML
@@ -262,7 +264,25 @@ public class LibrarianController {
 
 	@FXML
 	public void logOut(ActionEvent event) {
+		((Node) (event.getSource())).getScene().getWindow().hide();
 
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml")); 
+			// create a scene with root in it
+			Scene scene = new Scene(root);
+	
+			// get stage
+			Stage primaryStage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+	
+			// set scene onto the stage
+			primaryStage.setScene(scene);
+			primaryStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }
