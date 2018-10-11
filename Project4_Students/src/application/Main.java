@@ -1,4 +1,4 @@
-package view;
+package application;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("view/LoginPage.fxml"));
 			//Parent root = FXMLLoader.load(LibrarianController.class.getResource("LibrarianPage.fxml"));
 			// create a scene with root in it
 			Scene scene = new Scene(root);
