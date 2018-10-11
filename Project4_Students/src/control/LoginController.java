@@ -26,6 +26,8 @@ public class LoginController {
 
 	private DataAccessFacade df = new DataAccessFacade();
 	private HashMap<String, User> userMap = df.readUserMap();
+	
+	public static String accessLevel;
 
 	// when this method is called it will change the scene to librarian, admin or
 	// both accordingly
@@ -49,15 +51,18 @@ public class LoginController {
 
 					case ADMIN:
 						root = FXMLLoader.load(AdminController.class.getResource("/view/AdminPage.fxml"));
+						accessLevel = "Admin";
 						break;
 
 					case BOTH:
-						root = FXMLLoader.load(AdminController.class.getResource("/view/LibrarianPage.fxml"));
+						root = FXMLLoader.load(AdminController.class.getResource("/view/BothAccessPage.fxml"));
+						accessLevel = "Both";
 						break;
 					
 					default:
 					case LIBRARIAN:
 						root = FXMLLoader.load(LibrarianController.class.getResource("/view/LibrarianPage.fxml"));
+						accessLevel = "Librarian";
 						break;
 					}
 

@@ -58,6 +58,14 @@ public class AddBookController {
 	private Book book;
 	@FXML
 	private int numberOfBookCopy;
+	
+	private String destination;
+	{
+		if(LoginController.accessLevel.equals("Admin"))
+			destination = "/view/AdminPage.fxml";
+		else
+			destination = "/view/BothAccessPage.fxml";
+	}
 
 	@FXML
 	public void addBook(ActionEvent event) {
@@ -65,7 +73,7 @@ public class AddBookController {
 			
 			((Node) (event.getSource())).getScene().getWindow().hide();
 
-			Parent root = FXMLLoader.load(getClass().getResource("/view/AdminPage.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource(destination));
 			// create a scene with root in it
 			Scene scene = new Scene(root);
 			Stage primaryStage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
@@ -109,19 +117,17 @@ public class AddBookController {
 		//one copy is already created when a book is added. Only if there are multiple copies we need to add those copies
 		for(int i = 1; i < numberOfBookCopy; i++) {
 			book.addCopy();
-		}
-		
+		}	
 	}
-
-	public void confirmMaxDays(ActionEvent event) {
+	
+	public void confirmMaxDays() {
 		try {
 			int days = Integer.parseInt(maxCheckoutLength.getText());
-			if(days != 7 || days != 21) {
+			if(days != 7 && days != 21) {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Error Dialog");
 				alert.setHeaderText("Look, an Error Dialog");
 				alert.setContentText("Maximum Checkout Days can only be 7 or 21.");
-
 				alert.showAndWait();
 			}
 		} catch (Exception e) {
@@ -141,7 +147,7 @@ public class AddBookController {
 	@FXML
 	public void cancel(ActionEvent event) throws IOException {
 		((Node) (event.getSource())).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/view/AdminPage.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource(destination));
 		Scene scene = new Scene(root);
 		Stage primaryStage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
 		primaryStage.setScene(scene);

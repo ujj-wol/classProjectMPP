@@ -35,13 +35,21 @@ public class AddLibraryMemberController {
 	private Address address;
 	@FXML
 	private LibraryMember newPerson;
+	
+	private String destination;
+	{
+		if(LoginController.accessLevel.equals("Admin"))
+			destination = "/view/LibrarianPage.fxml";
+		else
+			destination = "/view/BothAccessPage.fxml";
+	}
 
 	@FXML
 	public void save(ActionEvent event) {
 		try {
 			((Node) (event.getSource())).getScene().getWindow().hide();
 
-			Parent root = FXMLLoader.load(getClass().getResource("/view/LibrarianPage.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource(destination));
 			// create a scene with root in it
 			Scene scene = new Scene(root);
 
@@ -73,7 +81,7 @@ public class AddLibraryMemberController {
 	@FXML
 	public void cancel(ActionEvent event) throws IOException {
 		((Node) (event.getSource())).getScene().getWindow().hide();
-		Parent root = FXMLLoader.load(getClass().getResource("/view/LibrarianPage.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource(destination));
 		Scene scene = new Scene(root);
 		Stage primaryStage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
 		primaryStage.setScene(scene);
