@@ -15,7 +15,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
@@ -33,10 +32,10 @@ import model.domain.CheckoutRecordEntry;
 import model.domain.LibraryMember;
 
 public class LibrarianController {
-	@FXML
-	private Label lblMessage;
+	
 	@FXML
 	private TextField memberID;
+	
 	@FXML
 	private TextField isbnNumber;
 
