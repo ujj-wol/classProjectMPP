@@ -17,7 +17,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
@@ -37,9 +36,8 @@ import model.domain.LibraryMember;
 public class BothController {
 	
 	@FXML
-	private Label lblMessage;
-	@FXML
 	private TextField memberID;
+
 	@FXML
 	private TextField isbnNumber;
 
@@ -67,25 +65,29 @@ public class BothController {
 
 	@FXML
 	protected void handleSearchButtonAction(ActionEvent event) {
-		
+
 		DataAccess da = new DataAccessFacade();
 		HashMap<String, LibraryMember> libraryMembers = da.readMemberMap();
 
 		LibraryMember member = libraryMembers.get(memberID.getText());
 		if (member != null) {
 			CheckoutRecord checkoutRecord = member.getCheckoutRecord();
-			this.displayTableView(checkoutRecord);
+			if (checkoutRecord != null) {
+				this.displayTableView(checkoutRecord);
+			} else {
+				canNotFind("Can not find any checkout record!");
+			}
 		} else {
 			canNotFind("Can not find this member id");
 			tableView.setItems(null);
 		}
 	}
-	
+
 	public void displayTableView(CheckoutRecord checkoutRecord) {
 		List<CheckoutRecordEntry> recordEntries = checkoutRecord.getCheckoutEntries();
-		
-		// Display to console 
-		for (CheckoutRecordEntry recordEntry: recordEntries) {
+
+		// Display to console
+		for (CheckoutRecordEntry recordEntry : recordEntries) {
 			System.out.println("ISBN: " + recordEntry.getBookCopy().getBook().getIsbn());
 			System.out.println("Title: " + recordEntry.getBookCopy().getBook().getTitle());
 			System.out.println("Checkout Date: " + recordEntry.getCheckoutDate());
@@ -119,7 +121,7 @@ public class BothController {
 
 	public void checkout(String memID, String isbnNum) {
 
-		DataAccess da = new DataAccessFacade();
+		DataAccessFacade da = new DataAccessFacade();
 		HashMap<String, LibraryMember> libraryMembers = da.readMemberMap();
 
 		LibraryMember member = libraryMembers.get(memID);
@@ -130,52 +132,37 @@ public class BothController {
 				if (book.getCopyNums() == null) {
 					canNotFind("Can not find copy of this book!");
 				} else {
-					if (member != null && book != null) {
-						boolean bookAvailable = true;
-						if (!book.isAvailable()) {
-							canNotFind("This book is not available!");
-							bookAvailable = false;
-						}
-						boolean copyAvailable = false;
-						if (bookAvailable) {
-							BookCopy[] bookCopies = book.getCopies();
-							BookCopy bookCopy = null;
-							for (BookCopy bCopy : bookCopies) {
-								if (bCopy.isAvailable()) {
-									copyAvailable = true;
-									bookCopy = bCopy;
-									break;
-								}
+
+					if (!book.isAvailable()) {
+						canNotFind("This book is not available!");
+					} else {
+						BookCopy bookCopy = book.getNextAvailableCopy();
+						if (bookCopy != null) {
+							LocalDate checkoutDate = LocalDate.now();
+							LocalDate dueDate = checkoutDate.plusDays(book.getMaxCheckoutLength());
+							// If both member ID and book ID are found and a copy is available, a new
+							// checkout record entry is created
+							CheckoutRecordEntry cRecordEntry = new CheckoutRecordEntry(checkoutDate, dueDate, bookCopy);
+							CheckoutRecord checkoutRecord = new CheckoutRecord();
+							if (member.getCheckoutRecord() != null) {
+								checkoutRecord = member.getCheckoutRecord();
 							}
 
-							if (copyAvailable) {
-								LocalDate checkoutDate = LocalDate.now();
-								LocalDate dueDate = checkoutDate.plusDays(book.getMaxCheckoutLength());
-								// If both member ID and book ID are found and a copy is available, a new
-								// checkout record entry is created
-								CheckoutRecordEntry cRecordEntry = new CheckoutRecordEntry(checkoutDate, dueDate,
-										bookCopy);
-								CheckoutRecord checkoutRecord = null;
-								if (member.getCheckoutRecord() != null) {
-									checkoutRecord = member.getCheckoutRecord();
-								} else {
-									checkoutRecord = new CheckoutRecord();
-								}
+							// This checkout entry is then added to the member's checkout record
+							checkoutRecord.addRecordEntry(cRecordEntry);
+							member.setCheckoutRecord(checkoutRecord);
+							da.saveNewMember(member);
 
-								// This checkout entry is then added to the member’s checkout record
-								checkoutRecord.addRecordEntry(cRecordEntry);
-								member.setCheckoutRecord(checkoutRecord);
-								da.saveNewMember(member);
+							// The copy that is checked out is marked as unavailable.
+							bookCopy.changeAvailability();
+							da.saveNewBook(book);
 
-								// The copy that is checked out is marked as unavailable.
-								bookCopy.changeAvailability();
-																
-								this.displayTableView(checkoutRecord);
-								success("Checkout successfully!");
-							}
+							this.displayTableView(checkoutRecord);
+							success("Checkout successfully!");
+						} else {
+							canNotFind("BookCopy is not available!");
 						}
 					}
-
 				}
 			} else {
 				canNotFind("Can not find this book!");
@@ -187,24 +174,69 @@ public class BothController {
 		}
 
 	}
-	
+
 	@FXML
 	private Text msg;
-	
+
 	public void canNotFind(String errorMsg) {
 		msg.setText(errorMsg);
 		msg.setFill(Paint.valueOf("red"));
 	}
-	
+
 	public void success(String successMsg) {
 		msg.setText(successMsg);
 		msg.setFill(Paint.valueOf("green"));
 	}
-	
+
 	@FXML
 	private void clearMessage() {
 		msg.setText("");
 	}
+
+	@FXML
+	public void addMember(ActionEvent event) {
+		try {
+			((Node) (event.getSource())).getScene().getWindow().hide();
+
+			Parent root = FXMLLoader.load(getClass().getResource("/view/AddLibraryMember.fxml"));
+			// create a scene with root in it
+			Scene scene = new Scene(root);
+
+			// get stage
+			Stage primaryStage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+
+			// set scene onto the stage
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+		} catch (Exception e) {
+			System.out.println("Ball");
+		}
+	}
+
+	@FXML
+	public void logOut(ActionEvent event) {
+		((Node) (event.getSource())).getScene().getWindow().hide();
+
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml"));
+			// create a scene with root in it
+			Scene scene = new Scene(root);
+
+			// get stage
+			Stage primaryStage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+
+			// set scene onto the stage
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 
 	@FXML
 	public void addBook(ActionEvent event) {
@@ -224,29 +256,6 @@ public class BothController {
 
 		} catch (Exception e) {
 			System.out.println("Ball");
-		}
-	}
-
-	@FXML
-	public void logOut(ActionEvent event) {
-		((Node) (event.getSource())).getScene().getWindow().hide();
-
-		Parent root;
-		try {
-			root = FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml")); 
-			// create a scene with root in it
-			Scene scene = new Scene(root);
-	
-			// get stage
-			Stage primaryStage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
-	
-			// set scene onto the stage
-			primaryStage.setScene(scene);
-			primaryStage.show();
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 	
@@ -270,46 +279,5 @@ public class BothController {
 			System.out.println("BallCopy");
 		}
 	}
-	
-//	@FXML
-//	public void searchOverdueCopies(ActionEvent event) {
-//		try {
-////			//((Node)(event.getSource())).getScene().getWindow().hide();
-////
-////			Parent root = FXMLLoader.load(getClass().getResource("/view/SearchOverdueCopiesView.fxml"));
-////			// create a scene with root in it
-////			Scene scene = new Scene(root);
-////
-////			// get stage
-////			Stage primaryStage = (Stage)((Node)(event.getSource())).getScene().getWindow();
-////
-////			// set scene onto the stage
-////			primaryStage.setScene(scene);
-////			primaryStage.show();
-//
-//		} catch (Exception e) {
-//			System.out.println("Copy Overdue Check");
-//		}
-//	}
-	
-	@FXML
-	public void addMember(ActionEvent event) {
-		try {
-			((Node) (event.getSource())).getScene().getWindow().hide();
-
-			Parent root = FXMLLoader.load(getClass().getResource("/view/AddLibraryMember.fxml"));
-			// create a scene with root in it
-			Scene scene = new Scene(root);
-
-			// get stage
-			Stage primaryStage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
-
-			// set scene onto the stage
-			primaryStage.setScene(scene);
-			primaryStage.show();
-
-		} catch (Exception e) {
-			System.out.println("Ball");
-		}
-	}
 }
+
