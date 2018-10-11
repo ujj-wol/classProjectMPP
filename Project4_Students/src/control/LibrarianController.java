@@ -120,7 +120,7 @@ public class LibrarianController {
 
 	public void checkout(String memID, String isbnNum) {
 
-		DataAccess da = new DataAccessFacade();
+		DataAccessFacade da = new DataAccessFacade();
 		HashMap<String, LibraryMember> libraryMembers = da.readMemberMap();
 
 		LibraryMember member = libraryMembers.get(memID);
@@ -137,19 +137,9 @@ public class LibrarianController {
 							canNotFind("This book is not available!");
 							bookAvailable = false;
 						}
-						boolean copyAvailable = false;
-						if (bookAvailable) {
-							BookCopy[] bookCopies = book.getCopies();
-							BookCopy bookCopy = null;
-							for (BookCopy bCopy : bookCopies) {
-								if (bCopy.isAvailable()) {
-									copyAvailable = true;
-									bookCopy = bCopy;
-									break;
-								}
-							}
-
-							if (copyAvailable) {
+						if (bookAvailable) {							
+							BookCopy bookCopy = book.getNextAvailableCopy();
+							if (bookCopy != null) {
 								LocalDate checkoutDate = LocalDate.now();
 								LocalDate dueDate = checkoutDate.plusDays(book.getMaxCheckoutLength());
 								// If both member ID and book ID are found and a copy is available, a new
@@ -163,16 +153,19 @@ public class LibrarianController {
 									checkoutRecord = new CheckoutRecord();
 								}
 
-								// This checkout entry is then added to the member’s checkout record
+								// This checkout entry is then added to the member's checkout record
 								checkoutRecord.addRecordEntry(cRecordEntry);
 								member.setCheckoutRecord(checkoutRecord);
 								da.saveNewMember(member);
 
 								// The copy that is checked out is marked as unavailable.
 								bookCopy.changeAvailability();
+								da.saveNewBook(book);
 																
 								this.displayTableView(checkoutRecord);
 								success("Checkout successfully!");
+							} else {
+								canNotFind("BookCopy is not available!");
 							}
 						}
 					}
