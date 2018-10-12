@@ -8,18 +8,13 @@
 
 <AnchorPane minHeight="400.0" minWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.AdminController">
    <children>
-      <Button layoutX="533.0" mnemonicParsing="false" onAction="#logOut" text="Log Out" />
-      <Button layoutX="37.0" layoutY="154.0" mnemonicParsing="false" onAction="#addBook" text="Add Book" />
-      <Button layoutX="37.0" layoutY="102.0" mnemonicParsing="false" onAction="#addCopy" text="Add Copy" />
-      <Button layoutX="36.0" layoutY="205.0" mnemonicParsing="false" onAction="#searchOverdueCopies" text="Search Overdue Books" />
-      <Label layoutX="140.0" layoutY="13.0" prefHeight="28.0" prefWidth="320.0" text="Library Management System">
+      <Button layoutX="229.0" layoutY="302.0" mnemonicParsing="false" onAction="#logOut" prefHeight="34.0" prefWidth="89.0" text="Log Out" />
+      <Button layoutX="135.0" layoutY="181.0" mnemonicParsing="false" onAction="#addBook" prefHeight="39.0" prefWidth="278.0" text="Add Book" />
+      <Button layoutX="135.0" layoutY="129.0" mnemonicParsing="false" onAction="#addCopy" prefHeight="39.0" prefWidth="278.0" text="Add Copy" />
+      <Button layoutX="134.0" layoutY="232.0" mnemonicParsing="false" onAction="#searchOverdueCopies" prefHeight="39.0" prefWidth="278.0" text="Search Overdue Books" />
+      <Label alignment="CENTER" layoutX="-2.0" layoutY="29.0" prefHeight="34.0" prefWidth="600.0" text="Library Management System Administrator" textFill="#291d94">
          <font>
-            <Font size="23.0" />
-         </font>
-      </Label>
-      <Label layoutX="38.0" layoutY="68.0" text="Admin Page" underline="true">
-         <font>
-            <Font size="15.0" />
+            <Font name="Georgia Bold Italic" size="22.0" />
          </font>
       </Label>
    </children>

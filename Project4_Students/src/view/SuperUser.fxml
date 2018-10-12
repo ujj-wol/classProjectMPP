@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="400.0" minWidth="600.0" prefHeight="440.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.BothController">
+   <children>
+      <Button layoutX="254.0" layoutY="372.0" mnemonicParsing="false" onAction="#logOut" prefHeight="34.0" prefWidth="89.0" style="-fx-background-color: #291d94;" text="Log Out" textFill="#f2ebeb" />
+      <Button layoutX="162.0" layoutY="148.0" mnemonicParsing="false" onAction="#addBook" prefHeight="39.0" prefWidth="278.0" text="Add Book" />
+      <Button layoutX="162.0" layoutY="96.0" mnemonicParsing="false" onAction="#addCopy" prefHeight="39.0" prefWidth="278.0" text="Add Copy" />
+      <Button layoutX="161.0" layoutY="199.0" mnemonicParsing="false" onAction="#searchOverdueCopies" prefHeight="39.0" prefWidth="278.0" text="Search Overdue Books" />
+      <Label alignment="CENTER" layoutX="-2.0" layoutY="29.0" prefHeight="34.0" prefWidth="600.0" text="Library Management System Super User" textFill="#291d94">
+         <font>
+            <Font name="Georgia Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <Button layoutX="162.0" layoutY="253.0" mnemonicParsing="false" onAction="#addMember" prefHeight="39.0" prefWidth="278.0" text="Add New Member" />
+      <Button layoutX="162.0" layoutY="305.0" mnemonicParsing="false" onAction="#checkout" prefHeight="39.0" prefWidth="278.0" text="Checkout a Book" />
+   </children>
+</AnchorPane>
