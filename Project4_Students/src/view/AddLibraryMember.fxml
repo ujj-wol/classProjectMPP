@@ -9,7 +9,7 @@
 
 <AnchorPane minHeight="200.0" minWidth="648.0" prefHeight="339.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.AddLibraryMemberController">
    <children>
-      <VBox layoutX="126.0" layoutY="77.0" prefHeight="152.0" prefWidth="207.0" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="126.0" AnchorPane.rightAnchor="367.0" AnchorPane.topAnchor="77.0">
+      <VBox layoutX="126.0" layoutY="77.0" prefHeight="132.0" prefWidth="176.0" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="126.0" AnchorPane.rightAnchor="367.0" AnchorPane.topAnchor="77.0">
          <children>
             <TextField fx:id="memberId" promptText="Member ID">
                <VBox.margin>
@@ -33,24 +33,24 @@
             </TextField>
          </children>
       </VBox>
-      <VBox layoutX="433.0" layoutY="79.0" prefHeight="181.0" prefWidth="203.0">
+      <VBox layoutX="433.0" layoutY="79.0" prefHeight="132.0" prefWidth="203.0">
          <children>
-            <TextField fx:id="city1" layoutX="10.0" layoutY="108.0" promptText="City">
+            <TextField fx:id="city" layoutX="10.0" layoutY="108.0" promptText="City">
                <VBox.margin>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="state1" layoutX="10.0" layoutY="81.0" promptText="State">
+            <TextField fx:id="state" layoutX="10.0" layoutY="81.0" promptText="State">
                <VBox.margin>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="zip1" layoutX="10.0" layoutY="27.0" promptText="Zip">
+            <TextField fx:id="zip" layoutX="10.0" layoutY="27.0" promptText="Zip">
                <VBox.margin>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="phone1" layoutX="10.0" layoutY="54.0" prefHeight="29.0" prefWidth="333.0" promptText="Phone">
+            <TextField fx:id="phone" layoutX="10.0" layoutY="54.0" prefHeight="29.0" prefWidth="333.0" promptText="Phone">
                <VBox.margin>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </VBox.margin>

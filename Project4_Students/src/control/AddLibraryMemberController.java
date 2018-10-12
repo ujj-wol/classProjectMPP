@@ -67,14 +67,14 @@ public class AddLibraryMemberController {
 			// save the member now to the database
 			DataAccessFacade df = new DataAccessFacade();
 			df.saveNewMember(newPerson);
-			System.out.println(df.readMemberMap());
+			//System.out.println(df.readMemberMap());
 			
 			// save these new addresses to the database
 			df.saveNewAddress(address);
-			System.out.println(df.readAddressMap());
+			//System.out.println(df.readAddressMap());
 
 		} catch (Exception e) {
-			System.out.println("Cat");
+			e.printStackTrace();
 		}
 	}
 

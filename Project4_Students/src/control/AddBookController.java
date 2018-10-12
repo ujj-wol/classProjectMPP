@@ -109,15 +109,15 @@ public class AddBookController implements Initializable { //to initialize value 
 				df.saveNewAuthor(a);
 			
 			// to see if the added data are mirrored to the storage
-			System.out.println(df.readBooksMap());
-			System.out.println();
-			System.out.println(df.readAddressMap());
-			System.out.println();
-			System.out.println(df.readAuthorMap());
+//			System.out.println(df.readBooksMap());
+//			System.out.println();
+//			System.out.println(df.readAddressMap());
+//			System.out.println();
+//			System.out.println(df.readAuthorMap());
 			
 			//check if book copies are properly created
-			System.out.println(book.getNumCopies());
-			System.out.println(Arrays.toString(book.getCopies()));
+//			System.out.println(book.getNumCopies());
+//			System.out.println(Arrays.toString(book.getCopies()));
 			
 		} catch (Exception e) {
 			e.printStackTrace();
