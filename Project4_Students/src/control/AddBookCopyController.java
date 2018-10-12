@@ -55,7 +55,7 @@ public class AddBookCopyController implements Initializable {
 		if(LoginController.accessLevel.equals("Admin"))
 			destination = "/view/AdminPage.fxml";
 		else
-			destination = "/view/BothAccessPage.fxml";
+			destination = "/view/SuperUser.fxml";
 	}
 
 	int count = 1;

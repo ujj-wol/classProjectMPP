@@ -60,6 +60,14 @@ public class LibrarianController {
 		String isbnNum = isbnNumber.getText();
 		this.checkout(memID, isbnNum);
 	}
+	
+	private String destination;
+	{
+		if(LoginController.accessLevel.equals("Librarian"))
+			destination = "/view/Librarian.fxml";
+		else
+			destination = "/view/SuperUser.fxml";
+	}
 
 	@FXML
 	protected void handleSearchButtonAction(ActionEvent event) {
@@ -233,6 +241,16 @@ public class LibrarianController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	@FXML
+	public void cancel(ActionEvent event) throws IOException {
+		((Node) (event.getSource())).getScene().getWindow().hide();
+		Parent root = FXMLLoader.load(getClass().getResource(destination));
+		Scene scene = new Scene(root);
+		Stage primaryStage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+		primaryStage.setScene(scene);
+		primaryStage.show();
 	}
 
 }

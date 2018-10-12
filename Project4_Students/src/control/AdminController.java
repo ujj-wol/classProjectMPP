@@ -8,25 +8,30 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class AdminController {
+	
+	@FXML AnchorPane content;
 
 	@FXML
 	public void addBook(ActionEvent event) {
 		try {
 			//((Node)(event.getSource())).getScene().getWindow().hide();
 
-			Parent root = FXMLLoader.load(getClass().getResource("/view/AddBook.fxml"));
+//			Parent root = FXMLLoader.load(getClass().getResource("/view/AddBook.fxml"));
+			content = FXMLLoader.load(getClass().getResource("/view/AddBook.fxml"));
 			// create a scene with root in it
-			Scene scene = new Scene(root);
+			Scene scene = new Scene(content);
 
 			// get stage
 			Stage primaryStage = (Stage)((Node)(event.getSource())).getScene().getWindow();
-
+			
 			// set scene onto the stage
 			primaryStage.setScene(scene);
-			primaryStage.show();
+			
+			//primaryStage.show();
 
 		} catch (Exception e) {
 			System.out.println("Ball");

@@ -55,7 +55,7 @@ public class LoginController {
 						break;
 
 					case BOTH:
-						root = FXMLLoader.load(AdminController.class.getResource("/view/BothAccessPage.fxml"));
+						root = FXMLLoader.load(AdminController.class.getResource("/view/SuperUser.fxml"));
 						accessLevel = "Both";
 						break;
 					

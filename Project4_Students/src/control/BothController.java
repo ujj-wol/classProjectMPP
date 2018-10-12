@@ -194,6 +194,27 @@ public class BothController {
 	}
 
 	@FXML
+	public void checkout(ActionEvent event) {
+		try {
+			((Node) (event.getSource())).getScene().getWindow().hide();
+			
+			Parent root = FXMLLoader.load(getClass().getResource("/view/CheckoutView.fxml"));
+			// create a scene with root in it
+			Scene scene = new Scene(root);
+			
+			// get stage
+			Stage primaryStage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+			
+			// set scene onto the stage
+			primaryStage.setScene(scene);
+			primaryStage.show();
+			
+		} catch (Exception e) {
+			System.out.println("Ball");
+		}
+	}
+	
+	@FXML
 	public void addMember(ActionEvent event) {
 		try {
 			((Node) (event.getSource())).getScene().getWindow().hide();

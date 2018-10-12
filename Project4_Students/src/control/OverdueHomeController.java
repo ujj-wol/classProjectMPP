@@ -57,7 +57,7 @@ public class OverdueHomeController implements Initializable {
 		if(LoginController.accessLevel.equals("Admin"))
 			destination = "/view/AdminPage.fxml";
 		else
-			destination = "/view/BothAccessPage.fxml";
+			destination = "/view/SuperUser.fxml";
 	}
 	
 	private ObservableList<Book> books = FXCollections.observableArrayList(getBooks());
