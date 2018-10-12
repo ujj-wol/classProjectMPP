@@ -41,7 +41,7 @@ public class AddLibraryMemberController {
 		if(LoginController.accessLevel.equals("Librarian"))
 			destination = "/view/Librarian.fxml";
 		else
-			destination = "/view/BothAccessPage.fxml";
+			destination = "/view/SuperUser.fxml";
 	}
 
 	@FXML

@@ -66,7 +66,7 @@ public class AddBookController implements Initializable { //to initialize value 
 		if(LoginController.accessLevel.equals("Admin"))
 			destination = "/view/AdminPage.fxml";
 		else
-			destination = "/view/BothAccessPage.fxml";
+			destination = "/view/SuperUser.fxml";
 	}
 
 	@FXML
