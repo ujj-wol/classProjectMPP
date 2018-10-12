@@ -27,7 +27,7 @@ public class LoginController {
 	private DataAccessFacade df = new DataAccessFacade();
 	private HashMap<String, User> userMap = df.readUserMap();
 	
-	public static String accessLevel;
+	public static String accessLevel = "";
 
 	// when this method is called it will change the scene to librarian, admin or
 	// both accordingly
